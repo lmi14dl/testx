@@ -1,0 +1,392 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>{% block title %}Modern Business - Start Bootstrap Template{% endblock %}</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'images/fractalx.ico' %}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href={% static 'css/styles.css' %} rel="stylesheet" />
+        {% block style %}{% endblock %}
+    </head>
+    <body class="d-flex flex-column h-100">
+        <style>
+            .navbar {
+                position: fixed;
+                background: rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            }
+            .navbar-brand,
+            .nav-link {
+                color: #00f0ff !important;
+                text-shadow: 0 0 2.5px #00f0ff, 0 0 5px #00f0ff, 0 0 10px #00f0ff;
+                transition: all 0.3s ease-in-out;
+            }
+            .nav-link:hover {
+                color: #ffffff !important;
+                text-shadow: 0 0 10px #fff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+            }
+            .navbar-brand:hover {
+                text-shadow: 0 0 10px #ffffff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+            }
+            footer.bg-dark {
+                background: rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 -8px 32px 0 rgba(31, 38, 135, 0.37);
+                padding: 20px 0;
+                color: #00f0ff;
+                text-shadow: 0 0 2.5px #00f0ff, 0 0 5px #00f0ff, 0 0 10px #00f0ff;
+            }
+            footer a:not(.social-icons-footer a) {
+                color: #00f0ff !important;
+                text-shadow: 0 0 2.5px #00f0ff, 0 0 5px #00f0ff, 0 0 10px #00f0ff;
+                transition: all 0.3s ease-in-out;
+            }
+            footer a:not(.social-icons-footer a):hover {
+                color: #ffffff !important;
+                text-shadow: 0 0 5px #ffffff, 0 0 10px #00f0ff, 0 0 15px #00f0ff;
+            }
+            .footer-logo {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 10px;
+            }
+            .footer-column {
+                padding: 0 15px;
+            }
+            .footer-column h5 {
+                font-size: 1rem;
+                margin-bottom: 10px;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+            .footer-column ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .footer-column ul li {
+                margin-bottom: 5px;
+            }
+            .footer-column ul li a {
+                font-size: 0.9rem;
+                text-decoration: none;
+            }
+            .newsletter-form {
+                display: flex;
+                margin-top: 10px;
+            }
+            .newsletter-input {
+                flex: 1;
+                padding: 8px;
+                border: 1px solid #00f0ff;
+                border-radius: 5px 0 0 5px;
+                background: rgba(255, 255, 255, 0.1);
+                color: #00f0ff;
+                outline: none;
+            }
+            .newsletter-input::placeholder {
+                color: rgba(0, 240, 255, 0.7);
+            }
+            .newsletter-button {
+                padding: 8px 15px;
+                border: 1px solid #00f0ff;
+                border-left: none;
+                border-radius: 0 5px 5px 0;
+                background: #00f0ff;
+                color: #000;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .newsletter-button:hover {
+                background: #ffffff;
+                color: #00f0ff;
+                box-shadow: 0 0 5px #00f0ff;
+            }
+            .footer-bottom {
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding-top: 10px;
+                margin-top: 20px;
+                font-size: 0.8rem;
+                text-align: center;
+            }
+            .social-icons-footer a {
+                color: #ffffff !important;
+                margin-left: 10px;
+                font-size: 1.5rem; /* افزایش اندازه آیکون‌ها */
+                transition: all 0.3s ease;
+            }
+            .social-icons-footer a:hover {
+                color: #00f0ff !important;
+                text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+            }
+            .dropdown-menu {
+                z-index: 1000 !important;
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.3);
+                border: 1px solid #00ffe0;
+                box-shadow: 0 0 10px #00ffe0;
+            }
+            .dropdown-item {
+                color: #00ffe0;
+            }
+            .dropdown-item:hover {
+                background-color: #00ffe0;
+                color: #000;
+            }
+            .navbar {
+                position: relative;
+                z-index: 1000;
+            }
+
+            /* Notification Styles */
+            .notification-container {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 10000;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .notification {
+                background: rgba(30, 30, 30, 0.3);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(0, 240, 255, 0.3);
+                border-radius: 10px;
+                padding: 15px;
+                color: #fff;
+                min-width: 300px;
+                max-width: 500px;
+                min-height: 60px;
+                max-height: 200px;
+                height: auto;
+                box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+                display: flex;
+                flex-direction: column;
+                opacity: 0;
+                transform: translateX(100%);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                overflow-y: auto;
+            }
+            .notification.show {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .notification-message {
+                font-size: 1rem;
+                line-height: 1.5;
+                margin-bottom: 10px;
+                padding-right: 30px;
+                word-wrap: break-word;
+            }
+            .notification-close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: none;
+                border: none;
+                color: #00f0ff;
+                font-size: 1.2rem;
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
+            .notification-close:hover {
+                color: #ff0080;
+            }
+            .notification-progress {
+                width: 100%;
+                height: 3px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 2px;
+                overflow: hidden;
+            }
+            .notification-progress-bar {
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, #00f0ff, #ff0080);
+                transition: width linear;
+            }
+        </style>
+        
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container px-5">
+                    <a class="navbar-brand" href={% url 'home' %}>
+                        <img src="{% static 'images/fractalx.png' %}" alt="FractalX Icon" style="width: 35px; height: 35px; margin-right: 5px; vertical-align: middle;">FractalX
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'support' %}">Support</a></li>
+                            {% if user.is_authenticated %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    👤 {{ user.username }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'update_user' %}">Profile</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                                </ul>
+                            </li>
+                            {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">SignUp</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Notification Container -->
+            <div class="notification-container" id="notificationContainer"></div>
+
+            <!-- Handle messages -->
+            <script>
+                // جمع‌آوری پیام‌ها در یک آرایه
+                const messages = [
+                    {% for message in messages %}
+                        "{{ message|escapejs }}"{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                ];
+                // نمایش پیام‌ها با تابع showNotification
+                document.addEventListener('DOMContentLoaded', function() {
+                    messages.forEach(message => {
+                        showNotification(message, 10000);
+                    });
+                });
+            </script>
+
+            {% block content %}
+            {% endblock %}
+
+        <!-- Footer-->
+        <footer class="bg-dark py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row">
+                    <div class="col-12 col-md-2 text-center text-md-start">
+                        <img src={% static 'images/fractalx.png' %} alt="FractalX Logo" class="footer-logo">
+                        <div class="small mt-2">© 2025 FractalX Inc.</div>
+                    </div>
+                    <div class="col-12 col-md-2 footer-column">
+                        <h5>Platform</h5>
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about' %}">About</a></li>
+                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                            <li><a href="{% url 'support' %}">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-2 footer-column">
+                        <h5>Services</h5>
+                        <ul>
+                            <li><a href="{% url 'web_design' %}">Web Design</a></li>
+                            <li><a href="{% url 'telegram_bot' %}">Create Telegram Bot</a></li>
+                            <li><a href="#">Trading Cources</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-2 footer-column">
+                        <h5>Portfolios</h5>
+                        <ul>
+                            <li><a href="{% url 'web_design_portfolio' %}">Web Design Portfolios</a></li>
+                            <li><a href="{% url 'telegram_bot_portfolio' %}">Telegram Bot Portfolios</a></li>
+                            <li><a href="#">Trading Tools Portfolios</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-2 footer-column">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Terms</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-2 footer-column">
+                        <h5>Newsletter</h5>
+                        <p class="small">Stay up to date with everything FractalX.</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="social-icons-footer">
+                        <a href="#"><i class="bi bi-discord"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>     
+        <script type="text/javascript">
+            !function(){var i="aRsz17",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
+        </script>
+        <script>
+            function showNotification(message, duration = 10000) {
+                const container = document.getElementById('notificationContainer');
+                
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.innerHTML = `
+                    <button class="notification-close">×</button>
+                    <div class="notification-message">${message}</div>
+                    <div class="notification-progress">
+                        <div class="notification-progress-bar" style="transition-duration: ${duration}ms"></div>
+                    </div>
+                `;
+                
+                // Add to container
+                container.appendChild(notification);
+                
+                // Trigger animation
+                setTimeout(() => notification.classList.add('show'), 10);
+                
+                // Start progress bar
+                setTimeout(() => {
+                    const progressBar = notification.querySelector('.notification-progress-bar');
+                    progressBar.style.width = '0%';
+                }, 50);
+                
+                // Close button functionality
+                const closeBtn = notification.querySelector('.notification-close');
+                closeBtn.addEventListener('click', () => {
+                    removeNotification(notification);
+                });
+                
+                // Auto-remove after duration
+                const timer = setTimeout(() => {
+                    removeNotification(notification);
+                }, duration);
+                
+                // Function to remove notification
+                function removeNotification(notificationElement) {
+                    clearTimeout(timer);
+                    notificationElement.classList.remove('show');
+                    setTimeout(() => {
+                        notificationElement.remove();
+                    }, 300);
+                }
+            }
+        </script>
+        {% block script %}
+        {% endblock %}
+    </body>
+</html>

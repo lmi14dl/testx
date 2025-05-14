@@ -1,0 +1,165 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}
+Telegram Bot Portfolios
+{% endblock %}
+
+{% block style %}
+<link href="{% static 'css/web_design_portfolio.css' %}" rel="stylesheet" />
+
+{% endblock %}
+
+{% block content %}
+<section class="py-5 portfolio-section">
+    <div class="container px-5 my-5">
+        <div class="section-glass">
+            <h1 class="section-title">Telegram Bot Portfolio</h1>
+            <p class="section-description">Here are some of the best Telegram Bots we’ve created for our clients.</p>
+
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                {% for portfolio in portfolios %}
+                
+                <div class="col">
+                    <div class="card mb-3 portfolio-card">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <div id="carousel-{{ portfolio.id }}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-wrap="true">
+                                    <div class="carousel-indicators">
+                                        {% for image in portfolio.images.all %}
+                                            <button type="button" data-bs-target="#carousel-{{ portfolio.id }}"
+                                                    data-bs-slide-to="{{ forloop.counter0 }}"
+                                                    class="{% if forloop.first %}active{% endif %}"
+                                                    aria-current="{% if forloop.first %}true{% endif %}"
+                                                    aria-label="Slide {{ forloop.counter }}"></button>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="carousel-inner">
+                                        {% for image in portfolio.images.all %}
+                                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                                <img src="{{ image.image.url }}" class="d-block w-100 img-fluid rounded thumbnail-img" alt="{{ portfolio.title }}">
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{ portfolio.id }}" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carousel-{{ portfolio.id }}" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ portfolio.title }}</h5>
+                                    <p class="card-text">{{ portfolio.description|truncatechars:100 }}</p>
+                                    <button class="btn-neon" data-bs-toggle="modal" data-bs-target="#portfolio-modal-{{ portfolio.id }}">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                {% endfor %}
+            </div>
+
+            <!-- Modals for portfolio details -->
+            {% for portfolio in portfolios %}
+            <div class="modal fade" id="portfolio-modal-{{ portfolio.id }}" tabindex="-1" aria-labelledby="portfolio-modal-{{ portfolio.id }}-label" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="portfolio-modal-{{ portfolio.id }}-label">{{ portfolio.title }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- توضیحات کامل -->
+                            <div class="description">
+                                <h6>Description</h6>
+                                <p>{{ portfolio.description }}</p>
+                            </div>
+                            <!-- تصاویر به صورت گرید سه‌تایی -->
+                            <div class="row row-cols-1 row-cols-md-3 g-3 mb-4">
+                                {% for image in portfolio.images.all %}
+                                <div class="col" style="--i: {{ forloop.counter0 }};">
+                                    <img src="{{ image.image.url }}" class="img-fluid thumbnail-img rounded" alt="{{ portfolio.title }}"
+                                         data-bs-toggle="modal" data-bs-target="#image-modal-{{ portfolio.id }}"
+                                         data-bs-slide-to="{{ forloop.counter0 }}">
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <!-- ویدیو -->
+                            {% if portfolio.video %}
+                                <div class="mt-4">
+                                    <h6>Video</h6>
+                                    <video width="100%" controls>
+                                        <source src="{{ portfolio.video.url }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            {% else %}
+                                <p>No video available</p>
+                            {% endif %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-neon" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal for full-size images -->
+            <div class="modal fade" id="image-modal-{{ portfolio.id }}" tabindex="-1" aria-labelledby="image-modal-{{ portfolio.id }}-label" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="image-modal-{{ portfolio.id }}-label">{{ portfolio.title }} - Images</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="image-carousel-{{ portfolio.id }}" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    {% for image in portfolio.images.all %}
+                                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                            <img src="{{ image.image.url }}" class="d-block w-100 img-fluid" alt="{{ portfolio.title }}">
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#image-carousel-{{ portfolio.id }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#image-carousel-{{ portfolio.id }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-neon" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- جاوااسکریپت برای تنظیم کراسل تصاویر بزرگ -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.thumbnail-img').forEach(function (img) {
+        img.addEventListener('click', function () {
+            var targetModal = this.getAttribute('data-bs-target');
+            var slideTo = this.getAttribute('data-bs-slide-to');
+            var carousel = document.querySelector(targetModal + ' .carousel');
+            var bootstrapCarousel = new bootstrap.Carousel(carousel);
+            bootstrapCarousel.to(slideTo);
+        });
+    });
+});
+</script>
+{% endblock %}

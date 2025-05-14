@@ -1,0 +1,88 @@
+/* ------------------- پس‌زمینه نئونی ------------------- */
+.neon-bg {
+    background: linear-gradient(135deg, #0f0c29, #49438d, #24243e);
+    background-size: 400% 400%;
+    animation: neonBackground 15s ease infinite;
+}
+
+
+/* ------------------- انیمیشن پس‌زمینه ------------------- */
+@keyframes neonBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ------------------- کارت شیشه‌ای ------------------- */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    color: white;
+}
+
+/* ------------------- دکمه نئونی ------------------- */
+.btn-neon {
+    background: transparent;
+    border: 2px solid #00ffe0;
+    color: #00ffe0;
+    box-shadow: 0 0 5px #00ffe0, 0 0 10px #00ffe0 inset;
+    transition: all 0.3s ease;
+}
+
+.btn-neon:hover {
+    background-color: #00ffe0;
+    color: black;
+    box-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0;
+}
+
+/* ------------------- متن نئونی ملایم ------------------- */
+.text-neon-muted {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ------------------- فرم‌ها ------------------- */
+.form-floating .form-control {
+    background: rgba(255, 255, 255, 0.05) !important;  /* پس‌زمینه با شفافیت کم */
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.form-floating .form-control:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #00ffe0;
+    box-shadow: 0 0 5px #00ffe0;
+    color: #fff;
+}
+
+.form-floating label {
+    color: #ccc !important;
+}
+
+/* ------------------- عنوان‌ها ------------------- */
+h2, h5, h1 {
+    color: white;
+}
+
+/* ------------------- عکس‌های داخل کارت ------------------- */
+img.rounded, img.rounded-circle {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+    max-width: 100%;  /* تنظیم عرض حداکثر به 100% */
+    height: auto;     /* حفظ نسبت ابعاد عکس */
+}
+
+img.rounded:hover, img.rounded-circle:hover {
+    transform: scale(1.05);
+}
+
+img.rounded, img.rounded-circle {
+    width: 200px;  /* عرض مشخص */
+    height: 200px; /* ارتفاع مشخص */
+}
+/* ------------------- سایه برای بلوک‌های اصلی ------------------- */
+.shadow-lg {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1) !important;
+}

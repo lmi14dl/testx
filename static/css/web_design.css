@@ -1,0 +1,236 @@
+body {
+    background: linear-gradient(135deg, #00ffc6, #00aaff, #7c3aed);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite;
+    background-attachment: fixed;
+    color: #ffffff;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.section-glass {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: 0 0 35px rgba(0, 255, 255, 0.2);
+}
+
+.highlight {
+    color: #00ffe0;
+    font-weight: 600;
+}
+
+.highlight-intro {
+    color: #ffb006;
+    font-weight: 600;
+}
+
+.section-glass h2, .section-glass h3 {
+    text-shadow: 0 0 12px #00ffe0, 0 0 18px #00ffe0;
+}
+
+.text-neon-muted {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+}
+
+.benefits-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.benefits-list li::before {
+    content: "✓";
+    color: #00ffe0;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.hero-image {
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-neon {
+    background: #00ffe0;
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    padding: 0.6rem 2rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-neon:hover {
+    background: #ffffff;
+    color: #000;
+    box-shadow: 0 0 20px #00ffe0;
+}
+
+/* استایل دکمه برگشت */
+.btn-back-neon {
+    background: linear-gradient(45deg, #00ffc6, #7c3aed);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 0 10px rgba(0, 255, 198, 0.5);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-back-neon:hover {
+    background: linear-gradient(45deg, #00aaff, #a100ff);
+    box-shadow: 0 0 20px rgba(0, 255, 198, 0.8);
+    transform: translateY(-2px);
+}
+
+/* استایل‌های مودال */
+.modal {
+    z-index: 1080 !important;
+}
+
+.modal-backdrop {
+    z-index: 1075 !important;
+    background: linear-gradient(135deg, rgba(0, 255, 198, 0.2), rgba(0, 170, 255, 0.2));
+    opacity: 0.8;
+}
+
+.modal-dialog {
+    max-width: 1000px !important;
+}
+
+.modal-content {
+    z-index: 1090 !important;
+    background: rgba(30, 30, 30, 0.15);
+    backdrop-filter: blur(12px);
+    border: 3px solid #00ffc6;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 255, 198, 0.5), 0 15px 60px rgba(124, 58, 237, 0.4);
+    color: #fff;
+    pointer-events: auto !important;
+}
+
+.modal-header {
+    background: rgba(20, 20, 20, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 17px 17px 0 0;
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-weight: bold;
+    font-size: 2rem;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.modal-body {
+    padding: 2.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0 0 17px 17px;
+}
+
+/* دکمه بستن */
+.modal .btn-close {
+    filter: invert(1);
+    opacity: 0.8;
+    transition: all 0.2s ease;
+}
+
+.modal .btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+/* تکست بالای مودال */
+.modal-instruction {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    background: rgba(0, 255, 198, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 198, 0.3);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* کادر دور فرم */
+.form-container {
+    border: 2px solid #00ffc6;
+    border-radius: 15px;
+    padding: 1.5rem;
+    background: rgba(0, 255, 198, 0.05);
+    box-shadow: 0 0 15px rgba(0, 255, 198, 0.3);
+}
+
+/* دکمه‌های نئونی مودال */
+.modal-btn-neon {
+    background: linear-gradient(45deg, #5f5f5f, #909090);
+    border: none;
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    color: #f7f7f7;
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 0 10px rgba(0, 255, 198, 0.5);
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-btn-neon:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 198, 0.8);
+    transform: translateY(-2px);
+}
+
+/* ورودی‌های فرم */
+.form-control {
+    font-size: 1.2rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* استایل پیام‌ها */
+.alert {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.alert-success {
+    background: rgba(0, 255, 198, 0.2);
+    border: 1px solid #00ffc6;
+}
+
+.alert-danger {
+    background: rgba(255, 99, 132, 0.2);
+    border: 1px solid #ff6384;
+}

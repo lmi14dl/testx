@@ -1,0 +1,230 @@
+/* Neon Background */
+.neon-bg {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glass Effect for Section */
+.section-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Neon Form Container */
+.form-container {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 20px;
+    background: linear-gradient(to right, #2b675b, #86587d, #3c8d7b);
+    background-size: 200% 200%;
+    animation: neonGlow 5s ease-in-out infinite;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+}
+
+@keyframes neonGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Neon Button */
+.modal-btn-neon {
+    background: linear-gradient(45deg, #16c2a0, #f64cd4);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5), 0 0 20px rgba(255, 0, 204, 0.5);
+    transition: all 0.3s ease;
+}
+
+.modal-btn-neon:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.756), 0 0 30px rgba(255, 0, 204, 0.8);
+    transform: translateY(-2px);
+}
+
+/* Form Inputs */
+.form-control-lg {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.form-control-lg:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #00ffcc;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    color: #fff;
+}
+
+/* Glass Effect for Select Dropdown */
+.form-control-lg.select-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 12px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+    background-size: 16px;
+    padding-left: 30px;
+}
+
+.form-control-lg.select-glass:focus {
+    border-color: #00ffcc;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+}
+
+.form-control-lg.select-glass option {
+    background: rgba(31, 38, 135, 0.9);
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    backdrop-filter: blur(5px);
+}
+
+.form-control-lg.select-glass option:hover {
+    background: linear-gradient(45deg, #00ffcc, #ff00cc);
+}
+
+/* Single Slider Container */
+.single-slider-container {
+    position: relative;
+    width: 100%;
+    height: 20px; /* برای اطمینان از فضای کافی برای دستگیره */
+}
+
+/* Single Slider */
+.single-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: transparent;
+    position: absolute;
+    top: 7px; /* تنظیم موقعیت عمودی */
+    left: 0;
+    outline: none;
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* Webkit Browsers (Chrome, Safari) */
+.single-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #00ffcc;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0, 255, 204, 0.5);
+    z-index: 3;
+}
+
+.single-slider::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
+}
+
+/* Firefox */
+.single-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #00ffcc;
+    border: none; /* Firefox ممکنه حاشیه اضافه کنه */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0, 255, 204, 0.5);
+    z-index: 3;
+}
+
+.single-slider::-moz-range-thumb:hover {
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
+}
+
+/* Microsoft Edge */
+.single-slider::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: #00ffcc;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0, 255, 204, 0.5);
+    z-index: 3;
+}
+
+.single-slider::-ms-thumb:hover {
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
+}
+
+/* Slider Track */
+.slider-track {
+    position: absolute;
+    top: 7px;
+    height: 6px;
+    background: #00ffcc;
+    border-radius: 3px;
+    z-index: 1;
+}
+
+/* Slider Background Track */
+.single-slider-container::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    z-index: 0;
+}
+
+/* Slider Value */
+.slider-value {
+    display: block;
+    margin-top: 30px; /* فضای بیشتر برای جلوگیری از هم‌پوشانی */
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+}
+
+/* Labels */
+label {
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+/* Text Muted */
+.text-neon-muted {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Highlight Text */
+.highlight {
+    color: #00ffcc;
+    font-weight: 700;
+}

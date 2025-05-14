@@ -1,0 +1,56 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}
+About FractalX
+{% endblock %}
+
+{% block style %}
+<link href={% static 'css/about.css' %} rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<!-- پس‌زمینه نئونی -->
+<div class="neon-bg text-white py-5">
+
+    <!-- About section one-->
+    <section class="py-5">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6">
+                    <img class="img-fluid rounded-4 shadow-lg mb-5 mb-lg-0" 
+                         src={% static 'images/about.png' %} alt="pic" />
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bolder">Our Vision</h2>
+                    <p class="lead text-neon-muted mb-0">
+                        FractalX was founded with the goal of revolutionizing digital solutions.
+                        We specialize in cutting-edge web design, AI-powered Telegram bots, and sophisticated trading tools that empower businesses and individuals to thrive in the digital era.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About section two-->
+    <section class="py-5">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 order-first order-lg-last">
+                    <img class="img-fluid rounded-4 shadow-lg mb-5 mb-lg-0" 
+                         src={% static 'images/about2.png' %} alt="..." />
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bolder">Innovation & Expansion</h2>
+                    <p class="lead text-neon-muted mb-0">
+                        At FractalX, we continuously push the boundaries of innovation.
+                        From developing intuitive and scalable web solutions to creating AI-driven trading bots,
+                        we are committed to delivering high-performance tools that drive success in an ever-evolving digital landscape.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}

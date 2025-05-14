@@ -1,0 +1,172 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a0033, #004d33, #003366);
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease infinite;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.faq-section {
+    max-width: 800px;
+    margin: 50px auto 20px auto; /* کاهش margin-bottom به 20px */
+    padding: 20px;
+}
+
+.faq-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    margin-bottom: 40px;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 198, 0.3), 0 0 30px rgba(106, 0, 244, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.faq-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 255, 198, 0.5), 0 0 40px rgba(106, 0, 244, 0.4);
+}
+
+.faq-question {
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(0, 255, 198, 0.2), rgba(106, 0, 244, 0.2));
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: linear-gradient(90deg, rgba(0, 255, 198, 0.3), rgba(106, 0, 244, 0.3));
+}
+
+.faq-question span::after {
+    content: '\25BC';
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question span::after {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    background: linear-gradient(90deg, rgba(0, 255, 198, 0.1), rgba(106, 0, 244, 0.1));
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    box-sizing: border-box;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding: 20px;
+    opacity: 1;
+    box-shadow: inset 0 0 15px rgba(0, 255, 198, 0.2);
+}
+
+.faq-answer p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.contact-section {
+    max-width: 800px;
+    margin: 20px auto 50px auto; /* کاهش margin-top به 20px */
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    margin-bottom: 40px;
+}
+
+.contact-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 198, 0.3);
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 0 25px rgba(0, 255, 198, 0.5), 0 0 35px rgba(106, 0, 244, 0.4);
+    background: linear-gradient(90deg, rgba(0, 255, 198, 0.2), rgba(106, 0, 244, 0.2));
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    stroke: #00ffc6;
+    transition: stroke 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+    stroke: #a100ff;
+}
+
+.contact-item.telegram:hover {
+    background: linear-gradient(90deg, rgba(0, 136, 204, 0.3), rgba(42, 171, 238, 0.3));
+}
+
+.contact-item.whatsapp:hover {
+    background: linear-gradient(90deg, rgba(37, 211, 102, 0.3), rgba(18, 140, 76, 0.3));
+}
+
+.contact-item.phone:hover {
+    background: linear-gradient(90deg, rgba(255, 193, 7, 0.3), rgba(255, 87, 34, 0.3));
+}
+
+.contact-item.email:hover {
+    background: linear-gradient(90deg, rgba(238, 66, 102, 0.3), rgba(153, 27, 107, 0.3));
+}

@@ -1,0 +1,87 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a0033, #004d33, #003366);
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease infinite;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.contact-section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    margin-bottom: 40px;
+}
+
+.contact-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 198, 0.3);
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 0 25px rgba(0, 255, 198, 0.5), 0 0 35px rgba(106, 0, 244, 0.4);
+    background: linear-gradient(90deg, rgba(0, 255, 198, 0.2), rgba(106, 0, 244, 0.2));
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    stroke: #00ffc6;
+    transition: stroke 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+    stroke: #a100ff;
+}
+
+.contact-item.telegram:hover {
+    background: linear-gradient(90deg, rgba(0, 136, 204, 0.3), rgba(42, 171, 238, 0.3));
+}
+
+.contact-item.whatsapp:hover {
+    background: linear-gradient(90deg, rgba(37, 211, 102, 0.3), rgba(18, 140, 76, 0.3));
+}
+
+.contact-item.phone:hover {
+    background: linear-gradient(90deg, rgba(255, 193, 7, 0.3), rgba(255, 87, 34, 0.3));
+}
+
+.contact-item.email:hover {
+    background: linear-gradient(90deg, rgba(238, 66, 102, 0.3), rgba(153, 27, 107, 0.3));
+}

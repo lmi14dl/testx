@@ -1,0 +1,153 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}
+Website Order Form | FractalX
+{% endblock %}
+
+{% block style %}
+<link href="{% static 'css/order_form.css' %}" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<section class="py-5 neon-bg">
+    <div class="container px-5 my-5">
+        <div class="section-glass">
+            <div class="text-center mb-5">
+                <h2 class="fw-bolder text-white">Website Design Order</h2>
+                <p class="lead text-neon-muted">Fill in your project details, and our team will get in touch with you.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="form-container">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="mb-4">
+                                {{ form.title.label_tag }}
+                                {{ form.title }}
+                                {% if form.title.errors %}
+                                    <div class="text-danger">{{ form.title.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-4">
+                                {{ form.description.label_tag }}
+                                {{ form.description }}
+                                {% if form.description.errors %}
+                                    <div class="text-danger">{{ form.description.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-4">
+                                {{ form.design_type.label_tag }}
+                                {{ form.design_type }}
+                                {% if form.design_type.errors %}
+                                    <div class="text-danger">{{ form.design_type.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-4">
+                                {{ form.price.label_tag }}
+                                <div class="single-slider-container">
+                                    {{ form.price }}
+                                    <div class="slider-track"></div>
+                                    <br>
+                                    <span class="slider-value" id="price-value">$5,000,000</span>
+                                </div>
+                                {% if form.price.errors %}
+                                    <div class="text-danger">{{ form.price.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <br><br>
+                            <button type="submit" class="btn modal-btn-neon w-100">
+                                <i class="bi bi-check-circle-fill me-2"></i> Submit Order
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Order Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderModalLabel">Order Status</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{% if message.tags == 'success' %}success{% else %}danger{% endif %} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block script %}
+<script>
+// Remove modal-backdrop after closing modal
+document.addEventListener('hidden.bs.modal', function () {
+    document.querySelectorAll('.modal-backdrop').forEach(function (backdrop) {
+        backdrop.remove();
+    });
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = 'auto';
+});
+
+// Automatically open modal only for POST requests
+document.addEventListener('DOMContentLoaded', function () {
+    {% if messages and from_post %}
+        var orderModal = new bootstrap.Modal(document.getElementById('orderModal'), {});
+        orderModal.show();
+    {% endif %}
+
+    // Format number with commas
+    function formatNumber(num) {
+        return 'T ' + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    // Update single slider
+    function updateSingleSlider(sliderId, valueId, unit) {
+        const slider = document.getElementById(sliderId);
+        const valueDisplay = document.getElementById(valueId);
+        const track = slider?.parentElement.querySelector('.slider-track');
+
+        if (!slider || !valueDisplay || !track) {
+            console.error(`Slider elements not found: sliderId=${sliderId}, valueId=${valueId}`);
+            return;
+        }
+
+        const value = parseInt(slider.value);
+        // Update display
+        valueDisplay.textContent = unit === 'Toman' ? formatNumber(value) : `${value} weeks`;
+
+        // Update track
+        const percent = ((value - parseInt(slider.min)) / (parseInt(slider.max) - parseInt(slider.min))) * 100;
+        track.style.width = `${percent}%`;
+    }
+
+    // Initialize sliders
+    console.log('Initializing sliders...');
+    updateSingleSlider('price-slider', 'price-value', 'Toman');
+
+    // Update on input
+    document.querySelectorAll('.single-slider').forEach(slider => {
+        console.log(`Attaching input event to slider: ${slider.id}`);
+        slider.addEventListener('input', function() {
+            const isPrice = this.id.includes('price');
+            updateSingleSlider(this.id, isPrice ? 'price-value' : 'time-value', isPrice ? 'Toman' : 'weeks');
+        });
+    });
+});
+</script>
+{% endblock %}
+{% endblock %}
